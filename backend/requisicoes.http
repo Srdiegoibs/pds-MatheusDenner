@@ -1,10 +1,11 @@
+
 ### Listar todos os donos
 GET http://localhost:5000/donos
 
-### Buscar um dono pelo id
+### Buscar dono pelo ID
 GET http://localhost:5000/donos/1
 
-### Cadastrar um novo dono
+### Cadastrar dono
 POST http://localhost:5000/donos
 Content-Type: application/json
 
@@ -13,7 +14,7 @@ Content-Type: application/json
     "telefone": "45999110004"
 }
 
-### Atualizar um dono
+### Atualizar dono
 PUT http://localhost:5000/donos/1
 Content-Type: application/json
 
@@ -22,26 +23,20 @@ Content-Type: application/json
     "telefone": "45999110001"
 }
 
-### Remover um dono
-DELETE http://localhost:5000/donos/3
+### Remover dono
+DELETE http://localhost:5000/donos/4
 
 
-### ----------------------------------------------------------
-### DAQUI PARA BAIXO SAO AS ROTAS QUE VOCE VAI ESCREVER
-### Elas so vao funcionar depois que voce criar as rotas de pets
-### no arquivo app.py
-### ----------------------------------------------------------
-
-### Listar todos os pets (com o nome do dono)
+### Listar todos os pets
 GET http://localhost:5000/pets
 
-### Listar apenas os pets de um dono (filtro por query param)
+### Filtrar pets por dono
 GET http://localhost:5000/pets?dono_id=1
 
-### Buscar um pet pelo id
+### Buscar pet pelo ID
 GET http://localhost:5000/pets/1
 
-### Cadastrar um novo pet
+### Cadastrar pet
 POST http://localhost:5000/pets
 Content-Type: application/json
 
@@ -52,7 +47,7 @@ Content-Type: application/json
     "dono_id": 1
 }
 
-### Atualizar um pet
+### Atualizar pet
 PUT http://localhost:5000/pets/1
 Content-Type: application/json
 
@@ -63,5 +58,28 @@ Content-Type: application/json
     "dono_id": 1
 }
 
-### Remover um pet
+### Remover pet
 DELETE http://localhost:5000/pets/5
+
+
+### DESAFIO: Dono inexistente (404)
+POST http://localhost:5000/pets
+Content-Type: application/json
+
+{
+    "nome": "Teste",
+    "especie": "gato",
+    "idade": 1,
+    "dono_id": 999
+}
+
+### Pet inexistente (404)
+GET http://localhost:5000/pets/999
+
+### Cadastro incompleto (400)
+POST http://localhost:5000/pets
+Content-Type: application/json
+
+{
+    "nome": "Sem dono"
+}
