@@ -1,9 +1,9 @@
+
 from app import app, db, Dono, Pet
 
 with app.app_context():
     db.create_all()
 
-    # Só adiciona os dados se o banco estiver vazio
     if Dono.query.first() is None:
 
         ana = Dono(
@@ -62,12 +62,7 @@ with app.app_context():
             dono_id=carla.id
         )
 
-        db.session.add(rex)
-        db.session.add(mimi)
-        db.session.add(thor)
-        db.session.add(nina)
-        db.session.add(pingo)
-
+        db.session.add_all([rex, mimi, thor, nina, pingo])
         db.session.commit()
 
     print("Banco criado com sucesso.")
